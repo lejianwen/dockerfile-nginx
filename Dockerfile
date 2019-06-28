@@ -1,8 +1,8 @@
 FROM centos
 MAINTAINER lejianwen <84855512@qq.com>
-ENV downurl http://nginx.org/download/nginx-1.17.1.tar.gz
 RUN yum -y install epel-release gcc gcc-c++ automake autoconf libtool make zlib zlib-devel openssl openssl-devel pcre pcre-devel
 RUN curl -L $downurl -o /nginx.tar.gz
+ENV downurl http://nginx.org/download/nginx-1.17.1.tar.gz
 RUN useradd -u 1000 www -s /sbin/nologin  \
     && mkdir /data/src -p && cd /data/src && mv /nginx.tar.gz ./ \
     && mkdir nginx && tar -zxf nginx.tar.gz -C ./nginx --strip-components 1 && cd nginx \
