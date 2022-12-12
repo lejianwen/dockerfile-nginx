@@ -18,7 +18,7 @@ RUN useradd -u 1000 www -s /sbin/nologin  \
     && cd / && rm /data/src -rf \
     && sed -i 's/\#user  nobody;/user www www;/' /data/apps/nginx/conf/nginx.conf \
     && sed -i 's/\#pid        logs\/nginx.pid;/pid        logs\/nginx.pid;/' /data/apps/nginx/conf/nginx.conf \
-    && sed -i '/pid        logs\/nginx.pid;/daemon off;' /data/apps/nginx/conf/nginx.conf
+    && sed -i '/pid        logs\/nginx.pid;/adaemon off;' /data/apps/nginx/conf/nginx.conf
 
 FROM base as builder
 MAINTAINER lejianwen <84855512@qq.com>
