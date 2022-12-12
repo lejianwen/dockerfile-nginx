@@ -44,4 +44,5 @@ RUN useradd -u 1000 www -s /sbin/nologin  \
     && sed -i 's/\#user  nobody;/user www www;/' /data/apps/nginx/conf/nginx.conf \
     && sed -i 's/\#pid        logs\/nginx.pid;/pid        logs\/nginx.pid;/' /data/apps/nginx/conf/nginx.conf \
     && sed -i '/pid        logs\/nginx.pid;/daemon off;' /data/apps/nginx/conf/nginx.conf
-CMD ["/data/apps/nginx/sbin/nginx"]
+RUN ln -s /data/apps/nginx/sbin/nginx /bin/nginx
+CMD ["nginx"]

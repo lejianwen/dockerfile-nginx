@@ -1,4 +1,4 @@
-FROM centos as base
+FROM centos:7.9.2009 as base
 MAINTAINER lejianwen <84855512@qq.com>
 ENV downurl http://nginx.org/download/nginx-1.20.2.tar.gz
 RUN yum -y install epel-release gcc gcc-c++ automake autoconf libtool make zlib zlib-devel openssl openssl-devel pcre pcre-devel
@@ -59,5 +59,5 @@ COPY --from=builder /etc/nsswitch.conf /etc/nsswitch.conf
 COPY --from=builder /etc/pki /etc/pki
 COPY --from=builder /rootfs/lib64/* /lib64/
 COPY --from=builder /data/ /data/
-
-CMD ["/data/apps/nginx/sbin/nginx"]
+RUN ln -s /data/apps/nginx/sbin/nginx /bin/nginx
+CMD ["nginx"]

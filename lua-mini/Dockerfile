@@ -87,5 +87,5 @@ COPY --from=builder /etc/pki /etc/pki
 COPY --from=builder /rootfs/lib64/* /lib64/
 COPY --from=builder /usr/local/lib/libluajit-5.1.so.2 /usr/local/lib/libluajit-5.1.so.2
 COPY --from=builder /data/ /data/
-
-CMD ["/data/apps/nginx/sbin/nginx"]
+RUN ln -s /data/apps/nginx/sbin/nginx /bin/nginx
+CMD ["nginx"]
